@@ -1,4 +1,4 @@
-package ballerina.net.jms;
+package ballerina/net.jms;
 
 
 @Description {value:"Configurations for a JMS service"}

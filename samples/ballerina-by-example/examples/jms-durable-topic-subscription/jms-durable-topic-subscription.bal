@@ -1,19 +1,19 @@
 import ballerina.net.jms;
 
-@Description{value : "Add the subscriptionId when connecting to a topic to create a durable topic subscription.
-clientId should be set if you are using any other broker. If you susbcribe without a subscription ID it will
-automatically be a non-durable susbcription. "}
-@jms:configuration {
-    initialContextFactory:"wso2mbInitialContextFactory",
-    providerUrl:
-    "amqp://admin:admin@carbon/carbon?brokerlist='tcp://localhost:5672'",
-    connectionFactoryName:"TopicConnectionFactory",
-    destination:"MyTopic",
-    subscriptionId:"mySub",
-    connectionFactoryType:jms:TYPE_TOPIC
+endpoint jms:ServiceEndpoint ep1 {
+    initialContextFactory: "wso2mbInitialContextFactory",
+    providerUrl: "amqp://admin:admin@carbon/carbon?brokerlist='tcp://localhost:5672'",
+    connectionFactoryName: "TopicConnectionFactory",
+    connectionFactoryType: "topic"
+};
+
+@jms:serviceConfig {
+    destination: "MyTopic",
+    subscriptionId: "mySub"
 }
-service<jms> jmsService {
-    resource onMessage (jms:JMSMessage m) {
+service<jms:Service> jmsService bind ep1 {
+
+    onMessage (endpoint client, jms:JMSMessage message) {
 
         // Retrieve the string payload using native function.
         string stringPayload = m.getTextMessageContent();

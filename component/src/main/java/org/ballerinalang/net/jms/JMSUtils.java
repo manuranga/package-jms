@@ -56,12 +56,12 @@ public class JMSUtils {
     /**
      * Creates the JMS connector friendly properties Map. Converting properties as required.
      *
-     * @param jmsConfig {@link Annotation}
+     * @param serviceConfig {@link Annotation}
      * @return Map of String key value properties.
      */
-    public static Map<String, String> preProcessServiceConfig(Annotation jmsConfig) {
+    public static Map<String, String> preProcessServiceConfig(Annotation serviceConfig) {
         Map<String, String> configParams = new HashMap<>();
-        Struct configStruct = jmsConfig.getValue();
+        Struct configStruct = serviceConfig.getValue();
         if (Objects.isNull(configStruct)) {
             return configParams;
         }
