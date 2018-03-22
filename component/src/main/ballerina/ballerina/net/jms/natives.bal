@@ -165,7 +165,7 @@ public native function <Message msg> setType (string s);
 
 @Description { value:"Get JMS transport header Type from the message"}
 @Return { value:"string: The header value" }
-public native function <Message msg> getType () (string);
+public native function <Message msg> getType () returns (string);
 
 @Description { value:"Sets ReplyTo JMS destinaiton name to the message"}
 @Param { value:"s: The header value" }
@@ -173,7 +173,7 @@ public native function <Message msg> setReplyTo (string s);
 
 @Description { value:"Get ReplyTo JMS destinaiton name from the message"}
 @Return { value:"string: The header value" }
-public native function <Message msg> getReplyTo () (string);
+public native function <Message msg> getReplyTo () returns (string);
 
 @Description { value:"Clear JMS properties of the message"}
 public native function <Message msg> clearProperties ();
